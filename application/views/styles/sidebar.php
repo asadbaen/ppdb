@@ -1,14 +1,5 @@
 <?php
 $role_id = $this->session->userdata('role_id');
-$queryMenu = "SELECT `user_menu_id`, `menu`
-                                FROM `user_menu` JOIN `access_menu` 
-                                ON `user_menu`.`user_menu_id` = `access_menu`.`menu_id`
-                                WHERE `access_menu`.`role_id` = $role_id
-                                ORDER BY `access_menu`.`menu_id` ASC
-                                ";
-
-$menu = $this->db->query($queryMenu)->result_array();
-
 ?>
 <aside id="sidebar" class="sidebar">
     <ul class="sidebar-nav" id="sidebar-nav">
@@ -34,7 +25,7 @@ $menu = $this->db->query($queryMenu)->result_array();
         <?php } else { ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url('create_data'); ?>">
-                    <i class="bi bi-envelope"></i>
+                    <i class="bi bi-person-add"></i>
                     <span>Daftar Peserta Didik</span>
                 </a>
             </li><!-- End Contact Page Nav -->
