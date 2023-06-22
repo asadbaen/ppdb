@@ -51,13 +51,13 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 // $route['default_controller'] = 'pdf';
 $route['default_controller'] = 'Auth';
-$route['admin-panel'] = 'admin';
-$route['kontak'] = 'kontak';
-$route['save_kontak'] = 'kontak/save';
-$route['peserta-didik'] = 'peserta_didik';
-$route['peserta-didik/detail/(:any)'] = 'peserta_didik/detail/$1';
-$route['peserta-didik/print/(:any)'] = 'peserta_didik/generatePdf/$1';
-$route['user/beranda'] = 'user';
+$route['register'] = 'Auth/register';
+$route['peserta-didik'] = 'admin';
+$route['detail_data/(:any)'] = 'admin/detail/$1';
+$route['edit_data/(:any)'] = 'admin/edit/$1';
+$route['cetak_data/(:any)'] = 'admin/cetak/$1';
+$route['peserta-didik/print/(:any)'] = 'admin/generatePdf/$1';
+$route['create_data'] = 'user';
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

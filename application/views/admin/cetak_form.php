@@ -61,11 +61,6 @@
                         <div class="mb-4">
                             <h5><b> A. IDENTITAS CALON PESERTA DIDIK</b></h5>
                         </div>
-                        <div class="row justify-content-center">
-                            <div class="col-md-4 col-auto d-none d-lg-block">
-                                <img src="<?= base_url('uploads/' . $peserta['nama_file']); ?>" class="print-image img-thumbnail rounded mx-auto d-block" alt="..." style="width: 200px; height: 200px;">
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="col-md-4 mb-4 pb-4">
                                 <label for="nama_lengkap" class="form-label">Nama Lengkap</label>
@@ -218,13 +213,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
     <script>
-        var imageElement = document.querySelector('.print-image');
-        var imageUrl = imageElement.src;
-
-        // Cetak URL gambar
-        console.log(imageUrl);
-
-        // Cetak halaman web
         window.print();
 
         // Mengarahkan kembali setelah 1 detik (dapat disesuaikan)

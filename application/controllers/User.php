@@ -15,6 +15,7 @@ class User extends CI_Controller
     public function index()
     {
         $data['title'] = "Halaman Beranda User";
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
 
         $data['list_agama'] = $this->User_model->getAgama();
         $data['list_jenis_kelamin'] = $this->User_model->getJeniskelamin();
@@ -30,6 +31,8 @@ class User extends CI_Controller
 
     public function save_create()
     {
+        $data['user'] = $this->db->get_where('users', ['email' => $this->session->userdata('email')])->row_array();
+
         $this->form_validation->set_rules('nama_depan', 'Nama Depan', 'required');
         $this->form_validation->set_rules('nama_belakang', 'Nama Belakang', 'required');
         $this->form_validation->set_rules('tempat_lahir', 'Tempat Lahir', 'required');
@@ -60,9 +63,9 @@ class User extends CI_Controller
                 'tempat_lahir_ayah' => $this->input->post('tempat_lahir_ayah'),
                 'tanggal_lahir_ayah' => $this->input->post('tanggal_lahir_ayah'),
                 'kewarganegaraan_ayah' => $this->input->post('kewarganegaraan_ayah'),
-                'pendidikan_id' => $this->input->post('pendidikan_id'),
-                'pekerjaan_id' => $this->input->post('pekerjaan_id'),
-                'agama_id' => $this->input->post('agama_id'),
+                'pendidikan_ayah' => $this->input->post('pendidikan_ayah'),
+                'pekerjaan_ayah' => $this->input->post('pekerjaan_ayah'),
+                'agama_ayah' => $this->input->post('agama_ayah'),
                 'telepon_ayah' => $this->input->post('telepon_ayah'),
             ];
             $dataIbu = [
@@ -70,50 +73,18 @@ class User extends CI_Controller
                 'tempat_lahir_ibu' => $this->input->post('tempat_lahir_ibu'),
                 'tanggal_lahir_ibu' => $this->input->post('tanggal_lahir_ibu'),
                 'kewarganegaraan_ibu' => $this->input->post('kewarganegaraan_ibu'),
-                'pendidikan_id' => $this->input->post('pendidikan_id'),
-                'pekerjaan_id' => $this->input->post('pekerjaan_id'),
-                'agama_id' => $this->input->post('agama_id'),
+                'pendidikan_ibu' => $this->input->post('pendidikan_ibu'),
+                'pekerjaan_ibu' => $this->input->post('pekerjaan_ibu'),
+                'agama_ibu' => $this->input->post('agama_ibu'),
                 'telepon_ibu' => $this->input->post('telepon_ibu'),
             ];
-
-            $dataProfile = [
-                'nama_file' => $_FILES['nama_file']['name']
-            ];
-            if (!empty($dataProfile)) {
-                $config['upload_path']   = './uploads/';
-                $config['allowed_types'] = 'gif|jpg|png';
-                $config['max_size']      = 5096;
-                $config['max_width']     = 5000;
-                $config['max_height']    = 5000;
-
-                $this->load->library('upload', $config);
-                $this->upload->initialize($config);
-
-                if (!$this->upload->do_upload('nama_file')) {
-                    $error = $this->upload->display_errors();
-                    $this->session->set_flashdata('message', $error);
-                    redirect('user');
-                } else {
-                    $post_image = $this->upload->data();
-
-                    // Generate new file name with current date
-                    $new_file_name = date('YmdHis') . '_' . date('Y') . '_' . date('D') . '_' . $this->session->userdata('role_id') . '.' . pathinfo($post_image['file_name'], PATHINFO_EXTENSION);
-
-                    // Rename the uploaded file
-                    rename($post_image['full_path'], $post_image['file_path'] . $new_file_name);
-
-                    $dataProfile['nama_file'] = $new_file_name;
-                }
-            }
-
             $calonSiswa = [
                 'id_siswa' => $this->User_model->createUser($dataUser),
                 'id_ayah' => $this->User_model->createAyah($dataAyah),
-                'id_ibu' => $this->User_model->createIbu($dataIbu),
-                'id_profile' => $this->User_model->createProfile($dataProfile),
+                'id_ibu' => $this->User_model->createIbu($dataIbu)
             ];
 
-            $this->db->insert('calon_siswa', $calonSiswa);
+            $this->db->insert('calon_peserta', $calonSiswa);
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data berhasil ditambahkan! </div>');
             redirect('user');

@@ -1,10 +1,3 @@
-<style>
-  @media print {
-    .a-siswa {
-      display: none;
-    }
-  }
-</style>
 <main id="main" class="main a-siswa">
   <section>
     <div class="row">
@@ -20,11 +13,6 @@
                 <h5><b> A. IDENTITAS CALON PESERTA DIDIK</b></h5>
               </div>
               <div class="siswa">
-                <div class="row justify-content-center">
-                  <div class="col-auto d-none d-lg-block">
-                    <img src="<?= base_url('uploads/' . $peserta['nama_file']); ?>" class="img-thumbnail rounded mx-auto d-block" alt="..." style="width: 200px; height: 200px;">
-                  </div>
-                </div>
                 <div class="row">
                   <div class="col-md-6 mb-4 pb-2">
                     <label for="nama_lengkap" class="form-label">Nama Lengakap</label>
@@ -160,7 +148,7 @@
               </div>
               <div class="d-flex flex-wrap justify-content-end">
                 <div class="col-md-6 mb-4 pb-2">
-                  <a href="<?php echo base_url('Peserta_didik/cetak/' . $peserta['id']) ?>" class="btn btn-primary position-relative" style="margin-right: 5px;" target="_blank"><i class="bi bi-printer"></i></a>
+                  <a href="<?php echo base_url('cetak_data/' . $peserta['id']) ?>" class="btn btn-primary position-relative" style="margin-right: 5px;"><i class="bi bi-printer"></i></a>
                 </div>
               </div>
             </form>

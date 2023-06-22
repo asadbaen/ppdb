@@ -14,32 +14,26 @@ $menu = $this->db->query($queryMenu)->result_array();
     <ul class="sidebar-nav" id="sidebar-nav">
         <?php if ($role_id == 1) { ?>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('admin-panel'); ?>">
-                    <i class="bi bi-grid"></i>
-                    <span>BERANDA</span>
+                <a class="nav-link collapsed" href="<?php echo base_url('peserta-didik'); ?>">
+                    <i class="bi bi-people"></i>
+                    <span>Data Peserta Didik</span>
                 </a>
-            </li><!-- End Dashboard Nav -->
+            </li><!-- End Contact Page Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="<?php echo base_url('create_data'); ?>">
+                    <i class="bi bi-person-add"></i>
+                    <span>TAMBAH</span>
+                </a>
+            </li><!-- End Contact Page Nav -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="<?php echo base_url('kontak'); ?>">
                     <i class="bi bi-envelope"></i>
                     <span>Kontak</span>
                 </a>
             </li><!-- End Contact Page Nav -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url('peserta-didik'); ?>">
-                    <i class="bi bi-envelope"></i>
-                    <span>Data Peserta Didik</span>
-                </a>
-            </li><!-- End Contact Page Nav -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url('user/beranda'); ?>">
-                    <i class="bi bi-envelope"></i>
-                    <span>TAMBAH</span>
-                </a>
-            </li><!-- End Contact Page Nav -->
         <?php } else { ?>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="<?php echo base_url('user/beranda'); ?>">
+                <a class="nav-link collapsed" href="<?php echo base_url('create_data'); ?>">
                     <i class="bi bi-envelope"></i>
                     <span>Daftar Peserta Didik</span>
                 </a>

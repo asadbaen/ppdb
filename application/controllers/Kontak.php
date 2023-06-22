@@ -11,11 +11,11 @@ class Kontak extends CI_Controller
 
     public function index()
     {
-        $data = 'Kontak';
-        $this->load->view('styles/head');
+        $data['title'] = "Kontak";
+        $this->load->view('styles/head', $data);
         $this->load->view('styles/navbar');
         $this->load->view('styles/sidebar');
-        $this->load->view('admin/Kontak', $data);
+        $this->load->view('admin/kontak', $data);
         $this->load->view('styles/footer');
     }
 }

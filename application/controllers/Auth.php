@@ -102,14 +102,13 @@ class Auth extends CI_Controller
 
 
         if ($this->form_validation->run() == false) {
-            $data['title'] = 'Membership Registration';
-            $this->load->view('auth/register', $data);
+            $data['title'] = 'Registration';
+            $this->load->view('auth/registration', $data);
         } else {
             // $data, set data if success validations
             $data = [
                 'username' => htmlspecialchars($this->input->post('username', true)),
                 'email' => htmlspecialchars($this->input->post('email', true)),
-                'images' => 'default.jpg',
                 'password' => password_hash($this->input->post('password1'), PASSWORD_BCRYPT),
                 'role_id' => 2,
                 'is_active' => 1,

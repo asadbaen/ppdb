@@ -5,7 +5,7 @@ class User_model extends CI_Model
 {
     public function createUser($dataUser)
     {
-        $this->db->insert('tb_data_siswa', $dataUser);
+        $this->db->insert('tb_data_peserta', $dataUser);
 
         return $this->db->insert_id();
     }
@@ -20,13 +20,6 @@ class User_model extends CI_Model
     public function createIbu($dataIbu)
     {
         $this->db->insert('tb_ibu', $dataIbu);
-
-        return $this->db->insert_id();
-    }
-
-    public function createProfile($dataProfile)
-    {
-        $this->db->insert('tbl_profile', $dataProfile);
 
         return $this->db->insert_id();
     }

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Pages / Register - NiceAdmin Bootstrap Template</title>
+  <title><?= $title; ?></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -18,17 +18,13 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="<?php echo base_url('/assets');?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="<?php echo base_url('/assets');?>/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="<?php echo base_url('/assets');?>/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="<?php echo base_url('/assets');?>/vendor/quill/quill.snow.css" rel="stylesheet">
-  <link href="<?php echo base_url('/assets');?>/vendor/quill/quill.bubble.css" rel="stylesheet">
-  <link href="<?php echo base_url('/assets');?>/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="<?php echo base_url('/assets');?>/vendor/simple-datatables/style.css" rel="stylesheet">
-
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-
+  <link href="<?php echo base_url('/assets'); ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?php echo base_url('/assets'); ?>/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="<?php echo base_url('/assets'); ?>/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="<?php echo base_url('/assets'); ?>/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="<?php echo base_url('/assets'); ?>/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="<?php echo base_url('/assets'); ?>/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="<?php echo base_url('/assets'); ?>/vendor/simple-datatables/style.css" rel="stylesheet">
   <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Mar 09 2023 with Bootstrap v5.2.3
@@ -47,16 +43,14 @@
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
-
               <div class="d-flex justify-content-center py-4">
                 <a href="index.html" class="logo d-flex align-items-center w-auto">
-                  <img src="assets/img/logo.png" alt="">
-                  <span class="d-none d-lg-block">TK TUNAS HARAPAN BANGSA</span>
+                  <img src="<?php echo base_url() ?>assets/img/logo.png" alt="">
                 </a>
               </div><!-- End Logo -->
-
+              <h3 class="d-none d-lg-block text-center">TK TUNAS HARAPAN BANGSA</h3>
               <div class="card mb-3">
-
+                <?= $this->session->flashdata('message'); ?>
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
@@ -64,40 +58,39 @@
                     <p class="text-center small">Enter your personal details to create account</p>
                   </div>
 
-                  <form class="user row g-3">
-                    <div class="col-12" method="post" action="<?= base_url('auth/registration');?>">
+                  <form class="user row g-3" action="<?= base_url('register') ?>" method="post">
+                    <div class="col-12">
                       <label for="name" class="form-label">Name</label>
-                      <input type="text" name="name" class="form-control" id="name" required>
-                      <div class="invalid-feedback">tolong masukkan alamat email dengan benar!</div>
-                      <?= form_error('name'); ?>
+                      <input type="text" name="username" class="form-control" id="name" value="<?php echo set_value('username') ?>">
+                      <?= form_error('username'); ?>
                     </div>
 
                     <div class="col-12">
                       <label for="yourEmail" class="form-label">Email</label>
-                      <input type="text" name="email" class="form-control" id="email" required>
-                      <div class="invalid-feedback">tolong masukkan alamat email dengan benar!</div>
+                      <input type="email" name="email" class="form-control" id="email" value="<?= set_value('email') ?>">
                       <?= form_error('email'); ?>
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="password" required>
-                      <div class="invalid-feedback">tolong masukkan password dengan benar!</div>
-                      <?= form_error('password'); ?>
+                      <input type="password" name="password1" class="form-control" id="password1" value="<?= set_value('password1'); ?>">
+                      <?= form_error('password1'); ?>
                     </div>
-
-                   
+                    <div class="col-12">
+                      <label for="yourPassword" class="form-label">Ulangi Password</label>
+                      <input type="password" name="password2" class="form-control" id="password2">
+                    </div>
                     <div class="col-12">
                       <button class="btn btn-primary w-100" type="submit"> BUAT AKUN</button>
                     </div>
                     <div class="text-center">
-                      <a class="small" href="<?= base_url('auth')?>">sudah punya akun? Login!</a>
+                      <a class="small" href="<?= base_url('Auth') ?>">sudah punya akun? Login!</a>
                   </form>
 
                 </div>
               </div>
 
-             
+
             </div>
           </div>
         </div>
@@ -125,4 +118,3 @@
 </body>
 
 </html>
-

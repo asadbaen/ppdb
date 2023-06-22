@@ -1,14 +1,5 @@
 <main id="main" class="main">
-  <div class="pagetitle">
-    <h1>KONTAK</h1>
-    <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="<?php echo base_url('Admin/Data_peserta'); ?>">Data Peserta</a></li>
-        <li class="breadcrumb-item"><a href="<?php echo base_url('Admin/Beranda'); ?>">Beranda</a></li>
-        <li class="breadcrumb-item active"><a href="<?php echo base_url('Admin/Kontak'); ?>">Kontak</a></li>
-      </ol>
-    </nav>
-  </div><!-- End Page Title -->
+
   <section class="section dashboard">
     <div class="row">
       <div class="log">
@@ -22,11 +13,6 @@
                 <form action="<?php echo base_url(); ?>User/save_create" method="POST" enctype="multipart/form-data">
                   <div class="mb-4">
                     <h5><b> A. IDENTITAS CALON PESERTA DIDIK</b></h5>
-                  </div>
-                  <div class="col-md-6 mb-4 pb-2">
-                    <label for="fileInput">Gambar siswa</label>
-                    <input type="file" class="form-control col-md-3" name="nama_file" id="fileInput" onchange="previewImage(event)" />
-                    <img id="preview" src="#" alt="Product Image" style="max-width: 200px; max-height: 200px; margin-top: 10px; display: none;">
                   </div>
                   <div class="siswa">
                     <div class="row">
@@ -113,8 +99,8 @@
                     </div>
                     <div class="row">
                       <div class="col-md-6 mb-4 pb-2">
-                        <label for="agama_id" class="form-label">Agama</label>
-                        <select name="agama_id" class="form-select" aria-label="Default select example">
+                        <label for="agama_ayah" class="form-label">Agama</label>
+                        <select name="agama_ayah" class="form-select" aria-label="Default select example">
                           <option selected disabled>Agama</option>
                           <?php foreach ($list_agama as $agama) : ?>
                             <option value="<?= $agama['agama_id']; ?>">
@@ -130,8 +116,8 @@
                     </div>
                     <div class="row">
                       <div class="col-md-6 mb-4 pb-2">
-                        <label for="pendidikan_id" class="form-label">Pendidikan Ayah/wali</label>
-                        <select name="pendidikan_id" class="form-select" aria-label="Default select example">
+                        <label for="pendidikan_ayah" class="form-label">Pendidikan Ayah/wali</label>
+                        <select name="pendidikan_ayah" class="form-select" aria-label="Default select example">
                           <option selected disabled>Pendidikan</option>
                           <?php foreach ($list_pendidikan as $pendidikan) : ?>
                             <option value="<?= $pendidikan['pendidikan_id']; ?>">
@@ -141,8 +127,8 @@
                         </select>
                       </div>
                       <div class="col-md-6 mb-4 pb-2">
-                        <label for="pekerjaan_id" class="form-label">Pekerjaan Ayah/wali</label>
-                        <select name="pekerjaan_id" class="form-select" aria-label="Default select example">
+                        <label for="pekerjaan_ayah" class="form-label">Pekerjaan Ayah/wali</label>
+                        <select name="pekerjaan_ayah" class="form-select" aria-label="Default select example">
                           <option selected disabled>Pekerjaan</option>
                           <?php foreach ($list_pekerjaan as $pekerjaan) : ?>
                             <option value="<?= $pekerjaan['pekerjaan_id']; ?>">
@@ -179,8 +165,8 @@
                     </div>
                     <div class="row">
                       <div class="col-md-6 mb-4 pb-2">
-                        <label for="agama_id" class="form-label">Agama</label>
-                        <select name="agama_id" class="form-select" aria-label="Default select example">
+                        <label for="agama_ibu" class="form-label">Agama</label>
+                        <select name="agama_ibu" class="form-select" aria-label="Default select example">
                           <option selected disabled>Agama</option>
                           <?php foreach ($list_agama as $agama) : ?>
                             <option value="<?= $agama['agama_id']; ?>">
@@ -196,8 +182,8 @@
                     </div>
                     <div class="row">
                       <div class="col-md-6 mb-4 pb-2">
-                        <label for="pendidikan_id" class="form-label">Pendidikan Ibu</label>
-                        <select name="pendidikan_id" class="form-select" aria-label="Default select example">
+                        <label for="pendidikan_ibu" class="form-label">Pendidikan Ibu</label>
+                        <select name="pendidikan_ibu" class="form-select" aria-label="Default select example">
                           <option selected disabled>Pendidikan</option>
                           <?php foreach ($list_pendidikan as $pendidikan) : ?>
                             <option value="<?= $pendidikan['pendidikan_id']; ?>">
@@ -207,8 +193,8 @@
                         </select>
                       </div>
                       <div class="col-md-6 mb-4 pb-2">
-                        <label for="pekerjaan_id" class="form-label">Pekerjaan Ibu</label>
-                        <select name="pekerjaan_id" class="form-select" aria-label="Default select example">
+                        <label for="pekerjaan_ibu" class="form-label">Pekerjaan Ibu</label>
+                        <select name="pekerjaan_ibu" class="form-select" aria-label="Default select example">
                           <option selected disabled>Pekerjaan</option>
                           <?php foreach ($list_pekerjaan as $pekerjaan) : ?>
                             <option value="<?= $pekerjaan['pekerjaan_id']; ?>">
@@ -235,15 +221,3 @@
     </div>
   </section>
 </main>
-
-<script>
-  function previewImage(event) {
-    var reader = new FileReader();
-    reader.onload = function() {
-      var preview = document.getElementById('preview');
-      preview.src = reader.result;
-      preview.style.display = 'block';
-    }
-    reader.readAsDataURL(event.target.files[0]);
-  }
-</script>
