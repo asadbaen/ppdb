@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2023 at 01:47 AM
+-- Generation Time: Jun 22, 2023 at 03:40 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -46,44 +46,23 @@ INSERT INTO `access_menu` (`id`, `role_id`, `menu_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `calon_siswa`
+-- Table structure for table `calon_peserta`
 --
 
-CREATE TABLE `calon_siswa` (
+CREATE TABLE `calon_peserta` (
   `id` int(11) NOT NULL,
   `id_siswa` int(11) DEFAULT NULL,
   `id_ayah` int(11) DEFAULT NULL,
-  `id_ibu` int(11) DEFAULT NULL,
-  `id_profile` int(11) NOT NULL
+  `id_ibu` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `calon_siswa`
+-- Dumping data for table `calon_peserta`
 --
 
-INSERT INTO `calon_siswa` (`id`, `id_siswa`, `id_ayah`, `id_ibu`, `id_profile`) VALUES
-(3, 22, 6, 5, 1),
-(17, 50, 34, 33, 8);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tbl_profile`
---
-
-CREATE TABLE `tbl_profile` (
-  `id_profile` int(11) NOT NULL,
-  `nama_file` varchar(225) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `tbl_profile`
---
-
-INSERT INTO `tbl_profile` (`id_profile`, `nama_file`, `created_at`) VALUES
-(1, '5fe8924d-1d45-4a98-93b1-c6356d942270.jpg', '2023-06-19 22:21:10'),
-(8, '20230620005144_2023_Tue_1.jpg', '2023-06-19 22:51:45');
+INSERT INTO `calon_peserta` (`id`, `id_siswa`, `id_ayah`, `id_ibu`) VALUES
+(1, 1, 1, 1),
+(2, 2, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -118,29 +97,28 @@ CREATE TABLE `tb_ayah` (
   `nama_ayah` varchar(100) NOT NULL,
   `tempat_lahir_ayah` varchar(100) NOT NULL,
   `tanggal_lahir_ayah` date NOT NULL,
-  `agama_id` int(11) NOT NULL,
+  `agama_ayah` int(11) NOT NULL,
   `kewarganegaraan_ayah` varchar(125) NOT NULL,
-  `pekerjaan_id` int(11) NOT NULL,
-  `pendidikan_id` int(11) NOT NULL,
-  `telepon_ayah` int(20) NOT NULL
+  `pekerjaan_ayah` int(11) NOT NULL,
+  `pendidikan_ayah` int(11) NOT NULL,
+  `telepon_ayah` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_ayah`
 --
 
-INSERT INTO `tb_ayah` (`id_ayah`, `nama_ayah`, `tempat_lahir_ayah`, `tanggal_lahir_ayah`, `agama_id`, `kewarganegaraan_ayah`, `pekerjaan_id`, `pendidikan_id`, `telepon_ayah`) VALUES
-(6, 'asdasd', 'asdada', '2023-06-14', 1, 'asdasd', 6, 2, 123123),
-(28, 'asdad', 'asdada', '2023-05-31', 3, 'asdasd', 7, 2, 23131),
-(34, 'asdasdas', 'adasda', '2023-06-11', 2, 'sdasd', 7, 4, 23123);
+INSERT INTO `tb_ayah` (`id_ayah`, `nama_ayah`, `tempat_lahir_ayah`, `tanggal_lahir_ayah`, `agama_ayah`, `kewarganegaraan_ayah`, `pekerjaan_ayah`, `pendidikan_ayah`, `telepon_ayah`) VALUES
+(1, 'Parto', 'Bekasi', '2001-05-22', 3, 'Indonesia', 11, 4, '02147483647'),
+(2, 'Fulan', 'Bali', '2023-05-29', 1, 'Indonesia', 8, 6, '0821312831');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_data_siswa`
+-- Table structure for table `tb_data_peserta`
 --
 
-CREATE TABLE `tb_data_siswa` (
+CREATE TABLE `tb_data_peserta` (
   `id_siswa` int(11) NOT NULL,
   `nama_lengkap` varchar(50) DEFAULT NULL,
   `tempat_lahir` varchar(20) NOT NULL,
@@ -153,13 +131,12 @@ CREATE TABLE `tb_data_siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `tb_data_siswa`
+-- Dumping data for table `tb_data_peserta`
 --
 
-INSERT INTO `tb_data_siswa` (`id_siswa`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin_id`, `agama_id`, `anak_ke`, `jml_saudara`, `kewarganegaraan_siswa`) VALUES
-(22, 'Haiza Ulya', 'Rembang', '2023-05-29', 2, 1, 2, 3, 'Indonesia'),
-(44, 'asdasd asdasda', 'asdasda', '2023-05-30', 1, 3, 21, 123, '12adadsa'),
-(50, 'sadasd asdasda', 'adsadsas', '2023-06-07', 2, 2, 212, 1213, 'assdad');
+INSERT INTO `tb_data_peserta` (`id_siswa`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin_id`, `agama_id`, `anak_ke`, `jml_saudara`, `kewarganegaraan_siswa`) VALUES
+(1, 'Jesica Jane', 'Jakarta', '2014-02-14', 2, 4, 2, 2, 'Indonesia'),
+(2, 'Jasmine', 'Surabaya', '2023-01-11', 2, 1, 1, 10, 'Indonesia');
 
 -- --------------------------------------------------------
 
@@ -172,21 +149,20 @@ CREATE TABLE `tb_ibu` (
   `nama_ibu` varchar(100) NOT NULL,
   `tempat_lahir_ibu` varchar(100) NOT NULL,
   `tanggal_lahir_ibu` date NOT NULL,
-  `agama_id` int(11) NOT NULL,
+  `agama_ibu` int(11) NOT NULL,
   `kewarganegaraan_ibu` varchar(125) NOT NULL,
-  `pekerjaan_id` int(11) NOT NULL,
-  `pendidikan_id` int(11) NOT NULL,
-  `telepon_ibu` int(20) NOT NULL
+  `pekerjaan_ibu` int(11) NOT NULL,
+  `pendidikan_ibu` int(11) NOT NULL,
+  `telepon_ibu` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tb_ibu`
 --
 
-INSERT INTO `tb_ibu` (`id_ibu`, `nama_ibu`, `tempat_lahir_ibu`, `tanggal_lahir_ibu`, `agama_id`, `kewarganegaraan_ibu`, `pekerjaan_id`, `pendidikan_id`, `telepon_ibu`) VALUES
-(5, 'adsasda', 'sdaasda', '2023-05-29', 1, 'asdasda', 5, 1, 2313113),
-(27, 'adasda', 'adasda', '2023-06-07', 3, 'asdad', 7, 2, 21311),
-(33, 'sadasd', 'asdasda', '2023-06-06', 2, 'asdasda', 7, 4, 23112312);
+INSERT INTO `tb_ibu` (`id_ibu`, `nama_ibu`, `tempat_lahir_ibu`, `tanggal_lahir_ibu`, `agama_ibu`, `kewarganegaraan_ibu`, `pekerjaan_ibu`, `pendidikan_ibu`, `telepon_ibu`) VALUES
+(1, 'Maria', 'Depok', '2011-01-22', 5, 'Indonesia', 10, 7, '02147483647'),
+(2, 'Yuki', 'Semarang', '2023-06-07', 1, 'Indonesia', 13, 4, '01283918319');
 
 -- --------------------------------------------------------
 
@@ -283,7 +259,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `role_id`, `is_active`, `date_created`) VALUES
 (1, 'user', 'user@gmail.com', '$2y$10$9JV2NjaCQvaqoWXU4.VtDevAHSkMPcrejDEzk3AeFELbaRKrQO9cC', 2, 1, 1684904789),
-(2, 'Administrator', 'admin@gmail.com', '$2y$10$shH2mh8LK5jrzm72JxCo1.aVBPW0Pq/2Len4eHtu7P9cTwfZjfIwq', 1, 1, 1684918702);
+(2, 'Administrator', 'admin@gmail.com', '$2y$10$shH2mh8LK5jrzm72JxCo1.aVBPW0Pq/2Len4eHtu7P9cTwfZjfIwq', 1, 1, 1684918702),
+(3, 'ulya', 'ulya@gmail.com', '$2y$10$ouJxaU3irNBfQopWFZBGvuFihxJS3kg9Ibwci7T2mrgtxJ2mYkPN6', 2, 1, 1687356054);
 
 -- --------------------------------------------------------
 
@@ -335,16 +312,10 @@ ALTER TABLE `access_menu`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `calon_siswa`
+-- Indexes for table `calon_peserta`
 --
-ALTER TABLE `calon_siswa`
+ALTER TABLE `calon_peserta`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tbl_profile`
---
-ALTER TABLE `tbl_profile`
-  ADD PRIMARY KEY (`id_profile`);
 
 --
 -- Indexes for table `tb_agama`
@@ -359,9 +330,9 @@ ALTER TABLE `tb_ayah`
   ADD PRIMARY KEY (`id_ayah`);
 
 --
--- Indexes for table `tb_data_siswa`
+-- Indexes for table `tb_data_peserta`
 --
-ALTER TABLE `tb_data_siswa`
+ALTER TABLE `tb_data_peserta`
   ADD PRIMARY KEY (`id_siswa`);
 
 --
@@ -417,16 +388,10 @@ ALTER TABLE `access_menu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `calon_siswa`
+-- AUTO_INCREMENT for table `calon_peserta`
 --
-ALTER TABLE `calon_siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT for table `tbl_profile`
---
-ALTER TABLE `tbl_profile`
-  MODIFY `id_profile` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `calon_peserta`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_agama`
@@ -438,19 +403,19 @@ ALTER TABLE `tb_agama`
 -- AUTO_INCREMENT for table `tb_ayah`
 --
 ALTER TABLE `tb_ayah`
-  MODIFY `id_ayah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_ayah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tb_data_siswa`
+-- AUTO_INCREMENT for table `tb_data_peserta`
 --
-ALTER TABLE `tb_data_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+ALTER TABLE `tb_data_peserta`
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_ibu`
 --
 ALTER TABLE `tb_ibu`
-  MODIFY `id_ibu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id_ibu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tb_jenis_kelamin`
@@ -474,7 +439,7 @@ ALTER TABLE `tb_pendidikan`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_menu`
@@ -493,10 +458,10 @@ ALTER TABLE `user_role`
 --
 
 --
--- Constraints for table `tb_data_siswa`
+-- Constraints for table `tb_data_peserta`
 --
-ALTER TABLE `tb_data_siswa`
-  ADD CONSTRAINT `tb_data_siswa_ibfk_2` FOREIGN KEY (`agama_id`) REFERENCES `tb_agama` (`agama_id`);
+ALTER TABLE `tb_data_peserta`
+  ADD CONSTRAINT `tb_data_peserta_ibfk_2` FOREIGN KEY (`agama_id`) REFERENCES `tb_agama` (`agama_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
